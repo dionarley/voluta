@@ -41,6 +41,30 @@ No macOS, remova a quarentena se necessário:
 xattr -d com.apple.quarantine voluta-macos-arm64
 ```
 
+## Interface gráfica (Qt)
+
+A interface usa **PySide6** e matplotlib. Ela permite ajustar os parâmetros da
+voluta, visualizar o perfil, calcular o dimensionamento e exportar os
+resultados.
+
+```bash
+uv sync --group gui
+uv run voluta gui
+```
+
+![Interface gráfica do Voluta](assets/voluta-gui.png)
+
+Recursos:
+
+- pré-visualização do perfil da voluta em tempo real;
+- controles para `R₂`, `K`, voltas e número de pontos;
+- calculadora de dimensionamento com `Q`, `ΔP`, `N`, `ρ`, `ψ`, `C₁m` e `η`;
+- exportação da imagem em PNG, SVG ou PDF;
+- exportação do dimensionamento em JSON.
+
+Os binários publicados em [Releases](https://github.com/dionarley/voluta/releases/latest)
+já incluem a interface gráfica.
+
 ## Linha de comando
 
 ### `voluta plot`

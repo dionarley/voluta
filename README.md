@@ -27,7 +27,9 @@ converter a energia cinética do ar em pressão estática.
 - Dimensiona **diâmetros de entrada e saída**, largura de pá e potência no eixo.
 - Aplica as **leis de afinidade** para mudança de rotação e diâmetro.
 - Gera **imagens** do perfil da voluta em PNG, SVG ou PDF.
-- Oferece uma **CLI** (`voluta plot` e `voluta design`) e uma API Python.
+- Oferece uma **CLI** (`voluta plot`, `voluta design` e `voluta gui`) e uma API Python.
+- Inclui uma **interface gráfica Qt** com pré-visualização do perfil e
+  calculadora de dimensionamento.
 
 ### Perfil gerado pelo projeto
 
@@ -120,6 +122,26 @@ Também é possível executar como módulo:
 uv run python -m voluta --help
 ```
 
+## Interface gráfica (Qt)
+
+A interface usa **PySide6** (Qt para Python) e matplotlib. Ela permite ajustar
+os parâmetros da voluta, visualizar o perfil em tempo real, calcular o
+dimensionamento e exportar a imagem ou o resultado em JSON.
+
+```bash
+uv sync --group gui
+uv run voluta gui
+```
+
+Também é possível instalar a interface como extra do pacote:
+
+```bash
+pip install ".[gui]"
+voluta gui
+```
+
+![Interface gráfica do Voluta](docs/assets/voluta-gui.png)
+
 ## Uso como biblioteca
 
 ```python
@@ -171,7 +193,7 @@ A dedução e as hipóteses estão em [docs/matematica.md](docs/matematica.md).
 │   ├── ci.yml
 │   └── docs.yml
 ├── docs/                       # documentação MkDocs
-│   ├── assets/                 # banner, PDF original e SVG da voluta
+│   ├── assets/                 # banner, screenshot, PDF e SVG
 │   ├── api.md
 │   ├── index.md
 │   ├── matematica.md
@@ -183,6 +205,7 @@ A dedução e as hipóteses estão em [docs/matematica.md](docs/matematica.md).
 │   ├── aero.py                 # equações de dimensionamento
 │   ├── cli.py                  # interface de linha de comando
 │   ├── geometry.py             # voluta e perfil cartesiano
+│   ├── gui.py                  # interface gráfica Qt
 │   └── plots.py                # visualização com matplotlib
 ├── tests/                      # testes com pytest
 ├── LICENSE                     # licença MIT

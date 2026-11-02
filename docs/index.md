@@ -8,11 +8,22 @@ nome vem da voluta, a carcaça em espiral que converte velocidade em pressão.
 
 ## Objetivo
 
-O projeto cobre duas frentes:
+O projeto cobre três frentes:
 
 1. **Geometria**: traçado da voluta em espiral de Arquimedes e do rotor.
 2. **Dimensionamento**: velocidade periférica, equação de Euler, diâmetros,
    largura de pá, potência no eixo e leis de afinidade.
+3. **Interface**: aplicação desktop em Qt (PySide6) com pré-visualização e
+   calculadora integrada.
+
+### Interface gráfica
+
+![Interface gráfica do Voluta](assets/voluta-gui.png)
+
+```bash
+uv sync --group gui
+uv run voluta gui
+```
 
 ### Perfil gerado pelo projeto
 

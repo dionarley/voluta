@@ -17,7 +17,7 @@ def _package_version() -> str:
     try:
         return version("voluta")
     except PackageNotFoundError:  # execução diretamente do código-fonte
-        return "0.1.0"
+        return "0.2.0"
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -92,6 +92,17 @@ def build_parser() -> argparse.ArgumentParser:
     )
     design_parser.add_argument("--json", action="store_true", help="Imprime o resultado em JSON.")
 
+    gui_parser = subparsers.add_parser(
+        "gui",
+        help="Abre a interface gráfica Qt.",
+        description="Abre a interface gráfica para explorar a geometria e o dimensionamento.",
+    )
+    gui_parser.add_argument(
+        "--smoke-test",
+        action="store_true",
+        help=argparse.SUPPRESS,
+    )
+
     return parser
 
 
@@ -154,6 +165,13 @@ def main(argv: Sequence[str] | None = None) -> int:
             else:
                 print(_format_design(design))
             return 0
+
+        if args.command == "gui":
+            try:
+                from .gui import run
+            except ImportError:
+                parser.error("A interface gráfica requer PySide6. Instale com: uv sync --group gui")
+            return run(smoke_test=args.smoke_test)
     except (TypeError, ValueError) as exc:
         parser.error(str(exc))
 
