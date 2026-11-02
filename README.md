@@ -4,6 +4,7 @@
 
 [![CI](https://github.com/dionarley/voluta/actions/workflows/ci.yml/badge.svg)](https://github.com/dionarley/voluta/actions/workflows/ci.yml)
 [![Docs](https://img.shields.io/badge/docs-GitHub%20Pages-2ea44f.svg)](https://dionarley.github.io/voluta/)
+[![Código-fonte](https://img.shields.io/badge/c%C3%B3digo-GitHub-181717?logo=github)](https://github.com/dionarley/voluta)
 [![Python](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/)
 [![uv](https://img.shields.io/badge/gerenciado%20com-uv-261230.svg)](https://docs.astral.sh/uv/)
 [![Licença: MIT](https://img.shields.io/badge/licen%C3%A7a-MIT-green.svg)](LICENSE)

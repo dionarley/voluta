@@ -44,6 +44,12 @@ uv run voluta design --flow 0.5 --pressure 1200 --rpm 3000
 - [API](api.md): referência gerada a partir das docstrings.
 - [Referências](referencias.md): documento original e leituras sugeridas.
 
+## Código-fonte
+
+O projeto é aberto e o código está disponível no GitHub:
+
+[Ver código-fonte no GitHub](https://github.com/dionarley/voluta){ .md-button .md-button--primary }
+
 ## Licença
 
 MIT. Consulte o arquivo `LICENSE` no repositório.

@@ -2,6 +2,9 @@ site_name: Voluta
 site_description: Matemática e geometria de sopradores centrífugos com Python.
 site_url: https://dionarley.github.io/voluta/
 site_author: Dionarley
+repo_url: https://github.com/dionarley/voluta
+repo_name: dionarley/voluta
+edit_uri: edit/main/docs/
 copyright: Copyright &copy; 2026 Dionarley — licença MIT
 
 theme:
@@ -21,6 +24,8 @@ theme:
         icon: material/brightness-4
         name: Mudar para tema claro
   features:
+    - content.action.edit
+    - content.action.view
     - content.code.copy
     - navigation.footer
     - navigation.sections
@@ -34,6 +39,7 @@ nav:
   - Uso: uso.md
   - API: api.md
   - Referências: referencias.md
+  - Código-fonte: https://github.com/dionarley/voluta
 
 plugins:
   - search
