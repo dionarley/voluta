@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-200 -200 400 400" width="100%" height="100%">
+  <style>
+    .bg { fill: #1e1e2e; }
+    .grid { stroke: #313244; stroke-width: 1; stroke-dasharray: 4,4; }
+    .axis { stroke: #45475a; stroke-width: 1.5; }
+    .volute { fill: none; stroke: #89b4fa; stroke-width: 3.5; stroke-linecap: round; }
+    .impeller-outer { fill: #fab387; fill-opacity: 0.25; stroke: #fab387; stroke-width: 2; }
+    .impeller-inner { fill: #f38ba8; fill-opacity: 0.3; stroke: #f38ba8; stroke-width: 1.5; }
+    .blade { stroke: #fab387; stroke-width: 2; fill: none; stroke-linecap: round; }
+    .tongue { fill: #f9e2af; stroke: #f9e2af; stroke-width: 2; }
+    .diffuser { fill: rgba(137, 180, 250, 0.15); stroke: #89b4fa; stroke-width: 2.5; }
+    .text { font-family: system-ui, -apple-system, sans-serif; font-size: 11px; fill: #cdd6f4; }
+    .text-title { font-size: 14px; font-weight: bold; fill: #89b4fa; }
+    .text-dim { font-size: 10px; fill: #a6adc8; }
+    .flow-arrow { fill: none; stroke: #a6e3a1; stroke-width: 2; stroke-dasharray: 4,2; marker-end: url(#arrow); }
+  </style>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#a6e3a1" />
+    </marker>
+  </defs>
+
+  <!-- Fundo -->
+  <rect x="-200" y="-200" width="400" height="400" class="bg" rx="12" />
+
+  <!-- Eixos de Referência -->
+  <line x1="-180" y1="0" x2="180" y2="0" class="axis" />
+  <line x1="0" y1="-180" x2="0" y2="180" class="axis" />
+  <circle cx="0" cy="0" r="50" class="grid" />
+  <circle cx="0" cy="0" r="100" class="grid" />
+
+  <!-- Carcaça (Voluta em Espiral de Arquimedes) -->
+  <!-- R(theta) = R2 + K*(theta/2pi) | R2=70, K=35 -->
+  <!-- θ=0: (70,0) -> θ=90: (0,-78.75) -> θ=180: (-87.5,0) -> θ=270: (0,96.25) -> θ=360: (105,0) -->
+  <path d="M 70 0 
+           A 78.75 78.75 0 0 0 0 -78.75 
+           A 87.5 87.5 0 0 0 -87.5 0 
+           A 96.25 96.25 0 0 0 0 96.25 
+           A 105 105 0 0 0 105 0" class="volute" />
+
+  <!-- Bocal de Saída (Difusor Retilíneo) -->
+  <path d="M 105 0 L 105 -120 L 70 -120 L 70 -12" class="diffuser" />
+  
+  <!-- Língua da Voluta (Volute Tongue / Cut-off) -->
+  <path d="M 70 0 C 68 -5, 68 -10, 70 -12" class="tongue" />
+
+  <!-- Rotor (Impeller) -->
+  <circle cx="0" cy="0" r="65" class="impeller-outer" />
+  <circle cx="0" cy="0" r="25" class="impeller-inner" />
+
+  <!-- Pás Curvadas para Trás (Backward-curved blades) -->
+  <g class="blade">
+    <path d="M 25 0 Q 40 20 65 0" />
+    <path d="M 0 25 Q -20 40 0 65" />
+    <path d="M -25 0 Q -40 -20 -65 0" />
+    <path d="M 0 -25 Q 20 -40 0 -65" />
+    <path d="M 17.68 17.68 Q 42.43 14.14 45.96 45.96" />
+    <path d="M -17.68 17.68 Q -14.14 42.43 -45.96 45.96" />
+    <path d="M -17.68 -17.68 Q -42.43 -14.14 -45.96 -45.96" />
+    <path d="M 17.68 -17.68 Q 14.14 -42.43 45.96 -45.96" />
+  </g>
+
+  <!-- Indicadores de Fluxo de Ar -->
+  <path d="M 40 -60 A 75 75 0 0 1 80 -20" class="flow-arrow" />
+  <path d="M 87.5 -60 L 87.5 -105" class="flow-arrow" />
+
+  <!-- Título e Legenda -->
+  <text x="-180" y="-170" class="text-title">Geometria da Voluta e Rotor</text>
+  <text x="-180" y="-153" class="text-dim">Perfil em Espiral: R(θ) = R₂ + K · (θ / 2π)</text>
+
+  <!-- Anotações Geométricas -->
+  <!-- R2 -->
+  <line x1="0" y1="0" x2="65" y2="0" stroke="#fab387" stroke-width="1.5" stroke-dasharray="2,2" />
+  <text x="30" y="-6" class="text" fill="#fab387">R₂</text>
+
+  <!-- R_theta (Expansão) -->
+  <line x1="0" y1="0" x2="-87.5" y2="0" stroke="#89b4fa" stroke-width="1.5" stroke-dasharray="2,2" />
+  <text x="-55" y="-6" class="text" fill="#89b4fa">R(θ)</text>
+
+  <!-- Língua da Voluta -->
+  <text x="112" y="25" class="text" fill="#f9e2af">Língua da Voluta</text>
+  <line x1="108" y1="20" x2="72" y2="-5" stroke="#f9e2af" stroke-width="1" stroke-dasharray="2,2" />
+
+  <!-- Saída de Ar -->
+  <text x="50" y="-135" class="text" fill="#a6e3a1" font-weight="bold">Saída de Ar (Q, ΔP)</text>
+</svg>

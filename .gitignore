@@ -1,0 +1,33 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+
+# Ambientes virtuais
+.venv/
+venv/
+
+# Ferramentas
+.pytest_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+.mypy_cache/
+
+# Build e documentação
+build/
+dist/
+site/
+
+# Saídas geradas
+examples/voluta.png
+voluta.png
+
+# Sistema / editores
+.DS_Store
+.idea/
+.vscode/
+*.swp
