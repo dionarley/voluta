@@ -3,6 +3,7 @@
 **Matemática e geometria de sopradores centrífugos.**
 
 [![CI](https://github.com/dionarley/voluta/actions/workflows/ci.yml/badge.svg)](https://github.com/dionarley/voluta/actions/workflows/ci.yml)
+[![Docs](https://img.shields.io/badge/docs-GitHub%20Pages-2ea44f.svg)](https://dionarley.github.io/voluta/)
 [![Python](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/)
 [![uv](https://img.shields.io/badge/gerenciado%20com-uv-261230.svg)](https://docs.astral.sh/uv/)
 [![Licença: MIT](https://img.shields.io/badge/licen%C3%A7a-MIT-green.svg)](LICENSE)
@@ -170,6 +171,8 @@ uv run mkdocs build --strict
 ```
 
 ## Documentação
+
+Documentação publicada: **https://dionarley.github.io/voluta/**
 
 - [Visão geral](docs/index.md)
 - [Matemática](docs/matematica.md)
