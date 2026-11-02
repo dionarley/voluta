@@ -9,6 +9,38 @@ uv sync
 O `uv` cria o ambiente `.venv` e instala o projeto em modo editável, além das
 dependências de desenvolvimento e documentação.
 
+## Binários
+
+A cada tag `v*`, o workflow **Binaries** gera executáveis standalone e publica
+no [GitHub Releases](https://github.com/dionarley/voluta/releases/latest).
+
+| Plataforma | Arquivo |
+| --- | --- |
+| Linux x86_64 | `voluta-linux-x86_64` |
+| macOS Intel | `voluta-macos-x86_64` |
+| macOS Apple Silicon | `voluta-macos-arm64` |
+| Windows x86_64 | `voluta-windows-x86_64.exe` |
+
+Linux e macOS:
+
+```bash
+chmod +x voluta-linux-x86_64
+./voluta-linux-x86_64 --version
+```
+
+Windows:
+
+```powershell
+.\voluta-windows-x86_64.exe --version
+```
+
+Os executáveis são gerados com PyInstaller e não são assinados digitalmente.
+No macOS, remova a quarentena se necessário:
+
+```bash
+xattr -d com.apple.quarantine voluta-macos-arm64
+```
+
 ## Linha de comando
 
 ### `voluta plot`

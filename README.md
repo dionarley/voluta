@@ -58,6 +58,40 @@ uv sync
 O comando cria o ambiente virtual em `.venv/`, instala o pacote em modo
 editável e baixa as dependências de desenvolvimento e documentação.
 
+## Binários pré-compilados
+
+A cada tag `v*`, o workflow **Binaries** gera executáveis standalone com
+PyInstaller e publica no [GitHub Releases](https://github.com/dionarley/voluta/releases/latest).
+
+| Plataforma | Arquivo |
+| --- | --- |
+| Linux x86_64 | `voluta-linux-x86_64` |
+| macOS Intel | `voluta-macos-x86_64` |
+| macOS Apple Silicon | `voluta-macos-arm64` |
+| Windows x86_64 | `voluta-windows-x86_64.exe` |
+
+Linux e macOS:
+
+```bash
+chmod +x voluta-linux-x86_64
+./voluta-linux-x86_64 --version
+```
+
+No macOS, se o sistema bloquear o executável por quarentena:
+
+```bash
+xattr -d com.apple.quarantine voluta-macos-arm64
+```
+
+Windows:
+
+```powershell
+.\voluta-windows-x86_64.exe --version
+```
+
+Os binários não são assinados digitalmente. O Windows pode exibir o aviso do
+SmartScreen e o macOS pode pedir confirmação no primeiro uso.
+
 ## Início rápido
 
 Gerar a imagem padrão da voluta:
@@ -131,15 +165,19 @@ A dedução e as hipóteses estão em [docs/matematica.md](docs/matematica.md).
 
 ```text
 .
-├── .github/workflows/ci.yml    # integração contínua
+├── .github/workflows/          # CI, Pages e binários
+│   ├── binaries.yml
+│   ├── ci.yml
+│   └── docs.yml
 ├── docs/                       # documentação MkDocs
-│   ├── assets/                 # PDF original e SVG da voluta
+│   ├── assets/                 # banner, PDF original e SVG da voluta
 │   ├── api.md
 │   ├── index.md
 │   ├── matematica.md
 │   ├── referencias.md
 │   └── uso.md
 ├── examples/                   # scripts de exemplo
+├── scripts/entrypoint.py       # entrada do PyInstaller
 ├── src/voluta/                 # código-fonte do pacote
 │   ├── aero.py                 # equações de dimensionamento
 │   ├── cli.py                  # interface de linha de comando

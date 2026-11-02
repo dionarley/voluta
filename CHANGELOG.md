@@ -16,6 +16,8 @@ o projeto adota [Versionamento Semântico](https://semver.org/lang/pt-BR/).
 - CLI `voluta plot` e `voluta design`.
 - Leis de afinidade para rotação e diâmetro.
 - Testes com `pytest` para geometria, aerodinâmica, gráficos e CLI.
+- Binários standalone para Linux, macOS e Windows via GitHub Actions e
+  PyInstaller.
 - Documentação com MkDocs Material, incluindo a matemática e a referência da
   API.
 - Licença MIT.

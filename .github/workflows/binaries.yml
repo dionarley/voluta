@@ -1,0 +1,116 @@
+name: Binaries
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: ${{ matrix.name }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: linux-x86_64
+            os: ubuntu-22.04
+            binary: voluta
+            asset: voluta-linux-x86_64
+          - name: macos-x86_64
+            os: macos-15-intel
+            binary: voluta
+            asset: voluta-macos-x86_64
+          - name: macos-arm64
+            os: macos-15
+            binary: voluta
+            asset: voluta-macos-arm64
+          - name: windows-x86_64
+            os: windows-latest
+            binary: voluta.exe
+            asset: voluta-windows-x86_64.exe
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Instalar uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          version: "latest"
+          enable-cache: true
+
+      - name: Sincronizar dependências
+        run: uv sync --locked --all-groups
+
+      - name: Gerar binário
+        shell: bash
+        run: |
+          uv run pyinstaller \
+            --noconfirm \
+            --clean \
+            --onefile \
+            --name voluta \
+            --collect-all matplotlib \
+            --distpath dist \
+            --workpath build/pyinstaller \
+            scripts/entrypoint.py
+
+      - name: Testar binário
+        shell: bash
+        run: |
+          ./dist/${{ matrix.binary }} --version
+          ./dist/${{ matrix.binary }} design --flow 0.5 --pressure 1200 --rpm 3000 --json > /dev/null
+          ./dist/${{ matrix.binary }} plot --output smoke.png --samples 50 --dpi 50
+          test -s smoke.png
+
+      - name: Renomear artefato
+        shell: bash
+        run: mv "dist/${{ matrix.binary }}" "dist/${{ matrix.asset }}"
+
+      - name: Publicar artefato
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.asset }}
+          path: dist/${{ matrix.asset }}
+          if-no-files-found: error
+
+  release:
+    name: Publicar release
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Instalar uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          version: "latest"
+          enable-cache: true
+
+      - name: Gerar pacotes Python
+        run: uv build
+
+      - name: Baixar binários
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+          merge-multiple: true
+
+      - name: Publicar no GitHub Releases
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh release view "${GITHUB_REF_NAME}" >/dev/null 2>&1; then
+            gh release upload "${GITHUB_REF_NAME}" artifacts/* dist/* --clobber
+          else
+            gh release create "${GITHUB_REF_NAME}" \
+              artifacts/* \
+              dist/* \
+              --title "Voluta ${GITHUB_REF_NAME}" \
+              --generate-notes
+          fi

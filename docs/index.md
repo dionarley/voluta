@@ -27,6 +27,9 @@ da voluta pode usar milímetros, como no exemplo original (`R₂ = 100 mm`).
 uv sync
 ```
 
+Também há binários standalone para Linux, macOS e Windows em
+[GitHub Releases](https://github.com/dionarley/voluta/releases/latest).
+
 ## Exemplo rápido
 
 ```bash
