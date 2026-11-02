@@ -52,7 +52,7 @@ def test_version_flag(capsys: pytest.CaptureFixture[str]) -> None:
         main(["--version"])
 
     assert exc_info.value.code == 0
-    assert "0.2.0" in capsys.readouterr().out
+    assert "0.2.1" in capsys.readouterr().out
 
 
 def test_invalid_values_exit_with_usage_error(capsys: pytest.CaptureFixture[str]) -> None:
@@ -61,3 +61,16 @@ def test_invalid_values_exit_with_usage_error(capsys: pytest.CaptureFixture[str]
 
     assert exc_info.value.code == 2
     assert "maior que zero" in capsys.readouterr().err
+
+
+def test_gui_without_pyside6_shows_install_hint(
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    monkeypatch.setattr("voluta.cli.find_spec", lambda name: None)
+
+    with pytest.raises(SystemExit) as exc_info:
+        main(["gui"])
+
+    assert exc_info.value.code == 2
+    assert "uv sync --group gui" in capsys.readouterr().err

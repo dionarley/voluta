@@ -6,6 +6,7 @@ import argparse
 import json
 from collections.abc import Sequence
 from importlib.metadata import PackageNotFoundError, version
+from importlib.util import find_spec
 from pathlib import Path
 
 from .aero import BlowerDesign, design_blower
@@ -17,7 +18,7 @@ def _package_version() -> str:
     try:
         return version("voluta")
     except PackageNotFoundError:  # execução diretamente do código-fonte
-        return "0.2.0"
+        return "0.2.1"
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -167,10 +168,17 @@ def main(argv: Sequence[str] | None = None) -> int:
             return 0
 
         if args.command == "gui":
+            if find_spec("PySide6") is None:
+                parser.error("A interface gráfica requer PySide6. Instale com: uv sync --group gui")
             try:
                 from .gui import run
-            except ImportError:
-                parser.error("A interface gráfica requer PySide6. Instale com: uv sync --group gui")
+            except ImportError as exc:
+                parser.error(
+                    "Não foi possível carregar a interface gráfica Qt.\n"
+                    f"Detalhe: {exc}\n"
+                    "No Linux/NixOS, verifique as bibliotecas de sistema do Qt "
+                    "(libGL, libxkbcommon, libxcb, libX11 e dbus)."
+                )
             return run(smoke_test=args.smoke_test)
     except (TypeError, ValueError) as exc:
         parser.error(str(exc))

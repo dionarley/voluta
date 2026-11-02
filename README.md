@@ -142,6 +142,21 @@ voluta gui
 
 ![Interface gráfica do Voluta](docs/assets/voluta-gui.png)
 
+### NixOS
+
+No NixOS, o PySide6 precisa de bibliotecas de sistema como `libGL`, `xcb`,
+`libX11` e `dbus`. O repositório inclui um `shell.nix` com esse ambiente:
+
+```bash
+nix-shell --run 'uv run voluta gui'
+```
+
+Se você instalou o comando globalmente, também pode usar:
+
+```bash
+nix-shell --run 'voluta gui'
+```
+
 ## Uso como biblioteca
 
 ```python
@@ -201,6 +216,7 @@ A dedução e as hipóteses estão em [docs/matematica.md](docs/matematica.md).
 │   └── uso.md
 ├── examples/                   # scripts de exemplo
 ├── scripts/entrypoint.py       # entrada do PyInstaller
+├── shell.nix                   # ambiente NixOS com bibliotecas Qt
 ├── src/voluta/                 # código-fonte do pacote
 │   ├── aero.py                 # equações de dimensionamento
 │   ├── cli.py                  # interface de linha de comando

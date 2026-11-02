@@ -6,7 +6,6 @@ import json
 import sys
 from pathlib import Path
 
-from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg
 from matplotlib.figure import Figure
 from PySide6.QtCore import QTimer
 from PySide6.QtGui import QAction, QKeySequence
@@ -93,6 +92,8 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(central)
 
     def _build_geometry_tab(self) -> QWidget:
+        from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg
+
         tab = QWidget()
         layout = QHBoxLayout(tab)
         layout.setContentsMargins(12, 12, 12, 12)

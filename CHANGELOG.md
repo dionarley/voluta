@@ -7,6 +7,19 @@ o projeto adota [Versionamento Semântico](https://semver.org/lang/pt-BR/).
 
 ## [Não lançado]
 
+## [0.2.1] - 2026-11-02
+
+### Corrigido
+
+- Mensagem do `voluta gui` agora diferencia PySide6 ausente de bibliotecas
+  de sistema do Qt ausentes (por exemplo, `libGL` no NixOS).
+
+### Adicionado
+
+- `shell.nix` com as bibliotecas necessárias para executar a interface
+  gráfica no NixOS.
+- Documentação de execução da GUI no NixOS.
+
 ## [0.2.0] - 2026-11-02
 
 ### Adicionado

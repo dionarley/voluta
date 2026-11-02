@@ -65,6 +65,15 @@ Recursos:
 Os binários publicados em [Releases](https://github.com/dionarley/voluta/releases/latest)
 já incluem a interface gráfica.
 
+### NixOS
+
+O wheel do PySide6 não inclui bibliotecas de sistema como `libGL`, `xcb`,
+`libX11` e `dbus`. Use o `shell.nix` do repositório:
+
+```bash
+nix-shell --run 'uv run voluta gui'
+```
+
 ## Linha de comando
 
 ### `voluta plot`
