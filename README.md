@@ -9,6 +9,8 @@
 [![Licença: MIT](https://img.shields.io/badge/licen%C3%A7a-MIT-green.svg)](LICENSE)
 [![Testes](https://img.shields.io/badge/testes-pytest-0a9edc.svg)](tests/)
 
+![Voluta Project — A Python-powered Centrifugal Blower Design & Flow Generator](docs/assets/voluta-project-hero.jpeg)
+
 Projeto de referência para a geometria e o dimensionamento preliminar de
 **sopradores centrífugos**. Reúne as equações de turbomáquinas do documento
 [Matemática dos Sopradores](docs/assets/matematica-dos-sopradores.pdf) em uma
@@ -16,8 +18,6 @@ biblioteca Python testável, uma CLI e documentação com as fórmulas.
 
 O nome **Voluta** vem da carcaça em espiral do soprador, responsável por
 converter a energia cinética do ar em pressão estática.
-
-![Geometria da voluta e do rotor](docs/assets/voluta.svg)
 
 ## O que o projeto faz
 
@@ -27,6 +27,10 @@ converter a energia cinética do ar em pressão estática.
 - Aplica as **leis de afinidade** para mudança de rotação e diâmetro.
 - Gera **imagens** do perfil da voluta em PNG, SVG ou PDF.
 - Oferece uma **CLI** (`voluta plot` e `voluta design`) e uma API Python.
+
+### Perfil gerado pelo projeto
+
+![Geometria da voluta e do rotor](docs/assets/voluta.svg)
 
 > O dimensionamento implementado é preliminar. Perdas, curvas reais do rotor,
 > seleção de motor, resistência mecânica e ruído devem ser verificados em um
