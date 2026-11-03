@@ -1,6 +1,6 @@
 [project]
 name = "voluta"
-version = "0.2.1"
+version = "0.3.0"
 description = "Geometria e dimensionamento de sopradores centrífugos: voluta, rotor e leis de afinidade."
 readme = "README.md"
 license = "MIT"

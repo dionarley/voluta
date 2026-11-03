@@ -32,7 +32,7 @@ from .aero import (
 from .geometry import VoluteProfile, volute_profile, volute_radius
 from .plots import plot_volute
 
-__version__ = "0.2.1"
+__version__ = "0.3.0"
 
 __all__ = [
     "BlowerDesign",

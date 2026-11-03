@@ -7,6 +7,8 @@ o projeto adota [Versionamento Semântico](https://semver.org/lang/pt-BR/).
 
 ## [Não lançado]
 
+## [0.3.0] - 2026-11-03
+
 ### Adicionado
 
 - Empacotamento Flatpak com runtime Freedesktop 25.08, metadados AppStream,

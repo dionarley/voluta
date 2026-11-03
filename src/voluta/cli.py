@@ -18,7 +18,7 @@ def _package_version() -> str:
     try:
         return version("voluta")
     except PackageNotFoundError:  # execução diretamente do código-fonte
-        return "0.2.1"
+        return "0.3.0"
 
 
 def build_parser() -> argparse.ArgumentParser:
