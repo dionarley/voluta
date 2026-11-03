@@ -95,6 +95,20 @@ Windows:
 Os binários não são assinados digitalmente. O Windows pode exibir o aviso do
 SmartScreen e o macOS pode pedir confirmação no primeiro uso.
 
+## Flatpak (Linux)
+
+Para Linux, o workflow **Flatpak** gera um bundle independente de distribuição.
+Baixe `voluta.flatpak` em
+[GitHub Releases](https://github.com/dionarley/voluta/releases/latest) e execute:
+
+```bash
+flatpak install --user voluta.flatpak
+flatpak run io.github.dionarley.voluta
+```
+
+O manifesto, o ícone, os metadados AppStream e as instruções de build estão em
+[`flatpak/`](flatpak/) e em [docs/flatpak.md](docs/flatpak.md).
+
 ## Início rápido
 
 Gerar a imagem padrão da voluta:
@@ -203,18 +217,21 @@ A dedução e as hipóteses estão em [docs/matematica.md](docs/matematica.md).
 
 ```text
 .
-├── .github/workflows/          # CI, Pages e binários
+├── .github/workflows/          # CI, Pages, binários e Flatpak
 │   ├── binaries.yml
 │   ├── ci.yml
-│   └── docs.yml
+│   ├── docs.yml
+│   └── flatpak.yml
 ├── docs/                       # documentação MkDocs
 │   ├── assets/                 # banner, screenshot, PDF e SVG
 │   ├── api.md
 │   ├── index.md
+│   ├── flatpak.md
 │   ├── matematica.md
 │   ├── referencias.md
 │   └── uso.md
 ├── examples/                   # scripts de exemplo
+├── flatpak/                    # manifesto, metadados e ícone Flatpak
 ├── scripts/entrypoint.py       # entrada do PyInstaller
 ├── shell.nix                   # ambiente NixOS com bibliotecas Qt
 ├── src/voluta/                 # código-fonte do pacote
@@ -231,6 +248,9 @@ A dedução e as hipóteses estão em [docs/matematica.md](docs/matematica.md).
 ```
 
 ## Desenvolvimento
+
+A branch `develop` concentra o desenvolvimento; `main` recebe as versões
+estáveis.
 
 ```bash
 uv sync                     # instala dependências

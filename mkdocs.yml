@@ -37,6 +37,7 @@ nav:
   - Início: index.md
   - Matemática: matematica.md
   - Uso: uso.md
+  - Flatpak: flatpak.md
   - API: api.md
   - Referências: referencias.md
   - Código-fonte: https://github.com/dionarley/voluta

@@ -7,6 +7,15 @@ o projeto adota [Versionamento Semântico](https://semver.org/lang/pt-BR/).
 
 ## [Não lançado]
 
+### Adicionado
+
+- Empacotamento Flatpak com runtime Freedesktop 25.08, metadados AppStream,
+  ícone, desktop entry e dependências Python fixadas por URL/SHA-256.
+- Workflow `Flatpak` para builds em `develop`/`main` e anexo do bundle aos
+  releases em tags `v*`.
+- Documentação de instalação e build local do Flatpak.
+- Workflow de CI também executa em pushes para a branch `develop`.
+
 ## [0.2.1] - 2026-11-02
 
 ### Corrigido
