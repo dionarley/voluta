@@ -10,6 +10,8 @@ copyright: Copyright &copy; 2026 Dionarley — licença MIT
 theme:
   name: material
   language: pt-BR
+  logo: assets/voluta-icon.svg
+  favicon: assets/voluta-icon.svg
   palette:
     - scheme: default
       primary: indigo
@@ -41,6 +43,9 @@ nav:
   - API: api.md
   - Referências: referencias.md
   - Código-fonte: https://github.com/dionarley/voluta
+
+hooks:
+  - hooks/copy_assets.py
 
 plugins:
   - search

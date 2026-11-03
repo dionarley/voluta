@@ -7,6 +7,11 @@ o projeto adota [Versionamento Semântico](https://semver.org/lang/pt-BR/).
 
 ## [Não lançado]
 
+### Alterado
+
+- Assets estáticos centralizados em `assets/`; o ícone do Flatpak agora é
+  usado no README e como logo/favicon da documentação.
+
 ## [0.3.0] - 2026-11-03
 
 ### Adicionado

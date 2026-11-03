@@ -24,7 +24,7 @@ modules:
       - install -Dm755 flatpak/voluta.sh ${FLATPAK_DEST}/bin/voluta
       - install -Dm644 flatpak/io.github.dionarley.voluta.desktop ${FLATPAK_DEST}/share/applications/io.github.dionarley.voluta.desktop
       - install -Dm644 flatpak/io.github.dionarley.voluta.metainfo.xml ${FLATPAK_DEST}/share/metainfo/io.github.dionarley.voluta.metainfo.xml
-      - install -Dm644 flatpak/io.github.dionarley.voluta.svg ${FLATPAK_DEST}/share/icons/hicolor/scalable/apps/io.github.dionarley.voluta.svg
+      - install -Dm644 assets/voluta-icon.svg ${FLATPAK_DEST}/share/icons/hicolor/scalable/apps/io.github.dionarley.voluta.svg
     sources:
       - type: dir
         path: ..
