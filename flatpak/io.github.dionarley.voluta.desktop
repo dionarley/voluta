@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Voluta
+GenericName=Centrifugal Blower Designer
+Comment=Geometria e dimensionamento de sopradores centrífugos
+Exec=voluta gui
+Icon=io.github.dionarley.voluta
+Terminal=false
+Categories=Science;Engineering;
+Keywords=blower;fan;centrifugal;volute;engineering;python;
+StartupNotify=true

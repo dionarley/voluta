@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>io.github.dionarley.voluta</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>MIT</project_license>
+  <name>Voluta</name>
+  <summary>Geometria e dimensionamento de sopradores centrífugos</summary>
+
+  <description>
+    <p>
+      Voluta é uma ferramenta Python para projetar e visualizar sopradores
+      centrífugos. O aplicativo combina o traçado geométrico da voluta em
+      espiral de Arquimedes com equações de dimensionamento aerodinâmico.
+    </p>
+    <ul>
+      <li>Pré-visualização do perfil da voluta e do rotor.</li>
+      <li>Cálculo de velocidade periférica, diâmetros e potência no eixo.</li>
+      <li>Exportação de imagens em PNG, SVG e PDF.</li>
+      <li>Exportação do dimensionamento em JSON.</li>
+    </ul>
+  </description>
+
+  <launchable type="desktop-id">io.github.dionarley.voluta.desktop</launchable>
+
+  <url type="homepage">https://github.com/dionarley/voluta</url>
+  <url type="bugtracker">https://github.com/dionarley/voluta/issues</url>
+  <url type="vcs-browser">https://github.com/dionarley/voluta</url>
+
+  <developer id="io.github.dionarley">
+    <name>Dionarley</name>
+  </developer>
+
+  <keywords>
+    <keyword>blower</keyword>
+    <keyword>fan</keyword>
+    <keyword>centrifugal</keyword>
+    <keyword>volute</keyword>
+    <keyword>engineering</keyword>
+  </keywords>
+
+  <screenshots>
+    <screenshot type="default">
+      <image>https://raw.githubusercontent.com/dionarley/voluta/main/docs/assets/voluta-gui.png</image>
+      <caption>Interface gráfica do Voluta</caption>
+    </screenshot>
+  </screenshots>
+
+  <content_rating type="oars-1.1"/>
+
+  <releases>
+    <release version="0.3.0" date="2026-11-03"/>
+  </releases>
+</component>

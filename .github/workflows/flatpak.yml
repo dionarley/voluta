@@ -1,0 +1,83 @@
+name: Flatpak
+
+on:
+  push:
+    branches: [develop, main]
+    tags: ["v*"]
+    paths:
+      - "flatpak/**"
+      - "src/**"
+      - "pyproject.toml"
+      - ".github/workflows/flatpak.yml"
+  pull_request:
+    branches: [develop, main]
+    paths:
+      - "flatpak/**"
+      - "src/**"
+      - "pyproject.toml"
+      - ".github/workflows/flatpak.yml"
+  workflow_dispatch:
+
+concurrency:
+  group: flatpak-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Instalar Flatpak e ferramentas
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y flatpak flatpak-builder appstream desktop-file-utils
+
+      - name: Configurar Flathub
+        run: |
+          flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+          flatpak install --user -y flathub org.freedesktop.Platform//25.08 org.freedesktop.Sdk//25.08
+
+      - name: Construir Flatpak
+        run: |
+          flatpak-builder \
+            --user \
+            --assumeyes \
+            --force-clean \
+            --default-branch=stable \
+            --repo=repo \
+            build-dir \
+            flatpak/io.github.dionarley.voluta.yml
+
+      - name: Gerar bundle
+        run: |
+          flatpak build-bundle repo voluta.flatpak io.github.dionarley.voluta stable
+
+      - name: Instalar e testar
+        run: |
+          flatpak install --user -y --bundle voluta.flatpak
+          flatpak run io.github.dionarley.voluta --version
+          flatpak run --env=QT_QPA_PLATFORM=offscreen io.github.dionarley.voluta gui --smoke-test
+
+      - name: Publicar artefato
+        uses: actions/upload-artifact@v4
+        with:
+          name: voluta-flatpak
+          path: voluta.flatpak
+
+      - name: Anexar ao release
+        if: startsWith(github.ref, 'refs/tags/v')
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for _ in $(seq 1 60); do
+            if gh release view "${GITHUB_REF_NAME}" >/dev/null 2>&1; then
+              break
+            fi
+            sleep 10
+          done
+          gh release upload "${GITHUB_REF_NAME}" voluta.flatpak --clobber

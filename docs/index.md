@@ -40,6 +40,8 @@ uv sync
 
 Também há binários standalone para Linux, macOS e Windows em
 [GitHub Releases](https://github.com/dionarley/voluta/releases/latest).
+Para Linux, há ainda um bundle [Flatpak](flatpak.md) independente de
+distribuição.
 
 ## Exemplo rápido
 

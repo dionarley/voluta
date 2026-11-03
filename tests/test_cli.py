@@ -52,7 +52,7 @@ def test_version_flag(capsys: pytest.CaptureFixture[str]) -> None:
         main(["--version"])
 
     assert exc_info.value.code == 0
-    assert "0.2.1" in capsys.readouterr().out
+    assert "0.3.0" in capsys.readouterr().out
 
 
 def test_invalid_values_exit_with_usage_error(capsys: pytest.CaptureFixture[str]) -> None:

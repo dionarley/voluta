@@ -1,0 +1,44 @@
+app-id: io.github.dionarley.voluta
+runtime: org.freedesktop.Platform
+runtime-version: "25.08"
+sdk: org.freedesktop.Sdk
+command: voluta
+
+finish-args:
+  - --share=ipc
+  - --socket=fallback-x11
+  - --socket=wayland
+  - --device=dri
+  - --filesystem=xdg-documents
+  - --filesystem=xdg-download
+  - --filesystem=xdg-pictures
+
+modules:
+  - python3-requirements.json
+
+  - name: voluta
+    buildsystem: simple
+    build-commands:
+      - install -d ${FLATPAK_DEST}/lib/python3.13/site-packages/voluta
+      - install -m644 src/voluta/*.py ${FLATPAK_DEST}/lib/python3.13/site-packages/voluta/
+      - install -Dm755 flatpak/voluta.sh ${FLATPAK_DEST}/bin/voluta
+      - install -Dm644 flatpak/io.github.dionarley.voluta.desktop ${FLATPAK_DEST}/share/applications/io.github.dionarley.voluta.desktop
+      - install -Dm644 flatpak/io.github.dionarley.voluta.metainfo.xml ${FLATPAK_DEST}/share/metainfo/io.github.dionarley.voluta.metainfo.xml
+      - install -Dm644 flatpak/io.github.dionarley.voluta.svg ${FLATPAK_DEST}/share/icons/hicolor/scalable/apps/io.github.dionarley.voluta.svg
+    sources:
+      - type: dir
+        path: ..
+        skip:
+          - .git
+          - .venv
+          - build
+          - dist
+          - site
+          - .pytest_cache
+          - .ruff_cache
+          - .flatpak-builder
+          - build-dir
+          - repo
+          - "*.flatpak"
+          - "**/__pycache__"
+          - "**/*.pyc"

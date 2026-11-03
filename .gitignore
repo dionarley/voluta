@@ -32,3 +32,9 @@ voluta.png
 .idea/
 .vscode/
 *.swp
+
+# Flatpak
+.flatpak-builder/
+build-dir/
+repo/
+*.flatpak

@@ -21,6 +21,9 @@ no [GitHub Releases](https://github.com/dionarley/voluta/releases/latest).
 | macOS Apple Silicon | `voluta-macos-arm64` |
 | Windows x86_64 | `voluta-windows-x86_64.exe` |
 
+Para Linux, também há um bundle Flatpak independente de distribuição. Veja
+[Flatpak](flatpak.md).
+
 Linux e macOS:
 
 ```bash
