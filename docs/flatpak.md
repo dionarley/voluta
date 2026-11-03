@@ -5,8 +5,8 @@ distribuição ou das bibliotecas Qt instaladas no sistema.
 
 ## Instalar o bundle
 
-Baixe `voluta.flatpak` na página de
-[Releases](https://github.com/dionarley/voluta/releases/latest) e instale:
+O bundle é publicado no [GitHub Releases](https://github.com/dionarley/voluta/releases/latest)
+a cada tag `v*`. Baixe `voluta.flatpak` e instale:
 
 ```bash
 flatpak install --user voluta.flatpak

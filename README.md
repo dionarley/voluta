@@ -97,8 +97,8 @@ SmartScreen e o macOS pode pedir confirmação no primeiro uso.
 
 ## Flatpak (Linux)
 
-Para Linux, o workflow **Flatpak** gera um bundle independente de distribuição.
-Baixe `voluta.flatpak` em
+A cada tag `v*`, o workflow **Flatpak** gera um bundle independente de
+distribuição. Baixe `voluta.flatpak` em
 [GitHub Releases](https://github.com/dionarley/voluta/releases/latest) e execute:
 
 ```bash
