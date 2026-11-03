@@ -68,7 +68,7 @@ flatpak run --env=QT_QPA_PLATFORM=offscreen \
 ```
 
 O workflow **Flatpak** executa esses testes a cada push ou pull request que
-altere o manifesto, o código-fonte ou o `pyproject.toml` nas branches
+altere o manifesto, o código-fonte, o `pyproject.toml` ou os assets nas branches
 `develop` e `main`. Em tags `v*`, o bundle também é anexado ao GitHub Releases.
 
 ## Estrutura do empacotamento
@@ -79,7 +79,7 @@ altere o manifesto, o código-fonte ou o `pyproject.toml` nas branches
 | `flatpak/python3-requirements.json` | wheels Python fixadas com URL e SHA-256 |
 | `flatpak/io.github.dionarley.voluta.desktop` | entrada do menu de aplicativos |
 | `flatpak/io.github.dionarley.voluta.metainfo.xml` | metadados AppStream |
-| `flatpak/io.github.dionarley.voluta.svg` | ícone escalável |
+| `assets/voluta-icon.svg` | ícone escalável compartilhado com o README e o site |
 | `flatpak/voluta.sh` | wrapper que executa `python3 -m voluta` |
 
 O manifesto usa o runtime `org.freedesktop.Platform` 25.08 e instala as

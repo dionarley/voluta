@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/voluta-icon.svg" alt="Ícone do Voluta" width="112">
+</p>
+
 # Voluta
 
 **Matemática e geometria de sopradores centrífugos.**
@@ -10,11 +14,11 @@
 [![Licença: MIT](https://img.shields.io/badge/licen%C3%A7a-MIT-green.svg)](LICENSE)
 [![Testes](https://img.shields.io/badge/testes-pytest-0a9edc.svg)](tests/)
 
-![Voluta Project — A Python-powered Centrifugal Blower Design & Flow Generator](docs/assets/voluta-project-hero.jpeg)
+![Voluta Project — A Python-powered Centrifugal Blower Design & Flow Generator](assets/voluta-project-hero.jpeg)
 
 Projeto de referência para a geometria e o dimensionamento preliminar de
 **sopradores centrífugos**. Reúne as equações de turbomáquinas do documento
-[Matemática dos Sopradores](docs/assets/matematica-dos-sopradores.pdf) em uma
+[Matemática dos Sopradores](assets/matematica-dos-sopradores.pdf) em uma
 biblioteca Python testável, uma CLI e documentação com as fórmulas.
 
 O nome **Voluta** vem da carcaça em espiral do soprador, responsável por
@@ -33,7 +37,7 @@ converter a energia cinética do ar em pressão estática.
 
 ### Perfil gerado pelo projeto
 
-![Geometria da voluta e do rotor](docs/assets/voluta.svg)
+![Geometria da voluta e do rotor](assets/voluta.svg)
 
 > O dimensionamento implementado é preliminar. Perdas, curvas reais do rotor,
 > seleção de motor, resistência mecânica e ruído devem ser verificados em um
@@ -154,7 +158,7 @@ pip install ".[gui]"
 voluta gui
 ```
 
-![Interface gráfica do Voluta](docs/assets/voluta-gui.png)
+![Interface gráfica do Voluta](assets/voluta-gui.png)
 
 ### NixOS
 
@@ -222,8 +226,8 @@ A dedução e as hipóteses estão em [docs/matematica.md](docs/matematica.md).
 │   ├── ci.yml
 │   ├── docs.yml
 │   └── flatpak.yml
+├── assets/                     # ícone, banner, screenshot, PDF e SVG
 ├── docs/                       # documentação MkDocs
-│   ├── assets/                 # banner, screenshot, PDF e SVG
 │   ├── api.md
 │   ├── index.md
 │   ├── flatpak.md
@@ -231,7 +235,8 @@ A dedução e as hipóteses estão em [docs/matematica.md](docs/matematica.md).
 │   ├── referencias.md
 │   └── uso.md
 ├── examples/                   # scripts de exemplo
-├── flatpak/                    # manifesto, metadados e ícone Flatpak
+├── flatpak/                    # manifesto e metadados Flatpak
+├── hooks/copy_assets.py        # copia assets para o site
 ├── scripts/entrypoint.py       # entrada do PyInstaller
 ├── shell.nix                   # ambiente NixOS com bibliotecas Qt
 ├── src/voluta/                 # código-fonte do pacote

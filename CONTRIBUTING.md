@@ -31,7 +31,7 @@ uv run ruff check --fix .
   quando adicionar ou alterar uma equação.
 - Mantenha as mensagens de erro em português e os identificadores em inglês,
   seguindo o padrão atual do código.
-- Preserve os artefatos originais em `docs/assets/` e
+- Preserve os artefatos originais em `assets/` e
   `examples/legacy_shape_soprador.py`.
 
 ## Commits

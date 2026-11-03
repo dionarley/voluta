@@ -9,7 +9,7 @@
 O PDF reúne os parâmetros de entrada, os triângulos de velocidade, a equação de
 Euler, o dimensionamento do rotor, a geometria da voluta, as leis de afinidade
 e as perdas. O script e o SVG originais foram preservados em
-`examples/legacy_shape_soprador.py` e `docs/assets/voluta.svg`.
+`examples/legacy_shape_soprador.py` e `assets/voluta.svg`.
 
 ## Leitura sugerida
 

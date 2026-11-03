@@ -23,6 +23,9 @@ dist/
 site/
 *.spec
 
+# Assets sincronizados pelo hook do MkDocs
+docs/assets/
+
 # Saídas geradas
 examples/voluta.png
 voluta.png
